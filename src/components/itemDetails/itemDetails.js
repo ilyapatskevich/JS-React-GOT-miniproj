@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './itemDetails.css';
-import gotService from '../../services/gotService';
+
 
 const Field = ({item, field, label}) => {
     return (
@@ -13,11 +13,11 @@ const Field = ({item, field, label}) => {
 
 export {
     Field
-}
+};
 
 export default class ItemDetails extends Component {
-    gotService = new gotService();
-    
+
+
     state = {
         item: null
     }
@@ -25,7 +25,7 @@ export default class ItemDetails extends Component {
     componentDidMount() {
         this.updateItem();
     }
-
+    
     componentDidUpdate(prevProps) {
         if (this.props.itemId !== prevProps.itemId) {
             this.updateItem();
@@ -34,7 +34,6 @@ export default class ItemDetails extends Component {
 
     updateItem() {
         const {itemId, getData} = this.props;
-
         if (!itemId) {
             return;
         }
@@ -48,13 +47,13 @@ export default class ItemDetails extends Component {
     render() {
 
         if (!this.state.item) {
-            return <span className="select-error">Please select an item in the list</span>
+            return <span className='select-error'>Please select item in the list</span>
         }
         const {item} = this.state;
         const {name} = item;
 
         return (
-            <div className="item-details rounded">
+            <div className="char-details rounded">
                 <h4>{name}</h4>
                 <ul className="list-group list-group-flush">
                     {
